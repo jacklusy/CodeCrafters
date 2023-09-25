@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['LoginBtn'])) {
 
             if ($row && password_verify($password, $row['password'])) {
                 if ($row['verify_status'] == "1") {
-
+                    
                     $_SESSION['authenticated'] = true;
                     $_SESSION['verify_token'] = $row['verify_token'];
 
@@ -34,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['LoginBtn'])) {
                     $_SESSION['status'] = "You are logged in successfully.";
                     header("Location: ../pages/dashboard.php");
                     exit(0);
+
                 } else {
                     $_SESSION['status'] = "Please verify your email address to login.";
                     header("Location: login.php");
